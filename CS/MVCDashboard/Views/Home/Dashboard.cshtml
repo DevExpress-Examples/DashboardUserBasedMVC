@@ -1,0 +1,32 @@
+﻿@using DevExpress.DashboardWeb
+
+<style type="text/css">
+    html, body, form {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    .dashboard {
+        height: calc(100% - 20px)!important;
+    }
+</style>
+
+<script>
+    function onBeforeRender(s) {
+        var dashboardControl = s.GetDashboardControl();
+        dashboardControl.registerExtension(new DevExpress.Dashboard.DashboardPanelExtension(dashboardControl));
+    }
+</script>
+
+@Html.ActionLink("Logout", "Index")
+
+@Html.DevExpress().Dashboard(settings => {
+    settings.Name = "Dashboard";
+    settings.ControlStyle.CssClass = "dashboard";
+    settings.ClientSideEvents.BeforeRender = "onBeforeRender";
+    settings.Init += (s, e) => {
+        var userName = (string)HttpContext.Current.Session["CurrentUser"];
+        ((MVCxDashboard)s).WorkingMode = (userName == "Guest" ? WorkingMode.ViewerOnly : WorkingMode.Viewer);
+    };
+}).GetHtml()

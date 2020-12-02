@@ -1,0 +1,30 @@
+<Dashboard>
+  <Title Text="New Dashboard 1 (Guest)" />
+  <DataSources>
+    <JsonDataSource Name="JSON Data Source" RootElement="Customers" ComponentName="jsonDataSource1">
+      <Source SourceType="DevExpress.DataAccess.Json.UriJsonSource" Uri="https://raw.githubusercontent.com/DevExpress-Examples/DataSources/master/JSON/customers.json" />
+    </JsonDataSource>
+  </DataSources>
+  <Items>
+    <Grid ComponentName="gridDashboardItem1" Name="Grid 1" DataSource="jsonDataSource1">
+      <DataItems>
+        <Dimension DataMember="Id" DefaultId="DataItem0" />
+        <Dimension DataMember="ContactName" DefaultId="DataItem1" />
+      </DataItems>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
+  </Items>
+  <LayoutTree>
+    <LayoutGroup>
+      <LayoutItem DashboardItem="gridDashboardItem1" />
+    </LayoutGroup>
+  </LayoutTree>
+</Dashboard>

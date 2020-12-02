@@ -1,0 +1,69 @@
+@model MVCDashboard.LoginData
+
+@using DevExpress.DashboardWeb
+
+<style type="text/css">
+    .roleTable td, .roleTable th {
+        border: 1px solid black;
+        padding: 5px;
+    }
+</style>
+
+<h1>DashboardUserBased Example</h1>
+
+@using (Html.BeginForm()) {
+    @Html.DevExpress().ComboBoxFor(m => m.UserName, settings => {
+        settings.Properties.NullText = "Select User";
+        settings.Properties.AllowNull = true;
+        settings.Properties.ClearButton.DisplayMode = ClearButtonDisplayMode.Always;
+        settings.Properties.Items.Add("Admin");
+        settings.Properties.Items.Add("User");
+        settings.Properties.Items.Add("Guest");
+    }).GetHtml()
+    <br />
+    @Html.DevExpress().Button(settings => {
+        settings.Name = "btnSubmit";
+        settings.Text = "Login";
+        settings.UseSubmitBehavior = true;
+    }).GetHtml()
+}
+
+<hr />
+<table class="roleTable">
+    <thead>
+        <tr>
+            <th>Role</th>
+            <th>Dashboard Storage</th>
+            <th>DataSource Storage</th>
+            <th>ConnectionString Provider</th>
+            <th>DBSchema Provider</th>
+            <th>Create/Edit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Admin</td>
+            <td>dashboard1_admin, dashboard2_admin</td>
+            <td>SqlDataSource, JsonDataSource</td>
+            <td>Northwind, CarsXtraScheduling</td>
+            <td>All (Categories, Products, Cars,...)</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>User</td>
+            <td>dashboard1_user</td>
+            <td>SqlDataSource</td>
+            <td>CarsXtraScheduling</td>
+            <td>Cars</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>Guest</td>
+            <td>dashboard1_guest (ViewerOnly mode)</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+        </tr>
+    </tbody>
+</table>
