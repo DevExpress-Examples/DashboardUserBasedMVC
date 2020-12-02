@@ -11,8 +11,11 @@ This example illustrates how to configure the Dashboard component to work in the
 Initially, the end-user opens the [Index.cshtml](./CS/MVCDashboard/Views/Home/Index.cshtml) view with the ComboBox and the Submit button for logging in. Aftrer that, the selected user Id is passed to the `HttpContext.Session["CurrentUser"]` variable and the end-user is redirected to the [Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) view where the Dashboard component demonstrates feeatures listed above. We implement a set of custom providers/storages to achieve user-specific processing:
 
 [IEditableDashboardStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IEditableDashboardStorage)
+
 [IDataSourceStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDataSourceStorage)
+
 [IDataSourceWizardConnectionStringsProvider Interface](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Web.IDataSourceWizardConnectionStringsProvider)
+
 [DBSchemaProviderEx Class](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Sql.DBSchemaProviderEx)
 
 Eevery custom store/provider uses the `System.Web.HttpContext.Current.Session["CurrentUser"]` variable to detect the current user and return the user-specific content.
