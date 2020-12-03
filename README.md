@@ -25,3 +25,4 @@ As for `ViewerOnly` mode, we also handle the [DashboardConfigurator.VerifyClient
 ## See Also
 
 - [T590909 - Web Dashboard - How to load dashboards based on user roles](https://supportcenter.devexpress.com/ticket/details/t590909/web-dashboard-how-to-load-dashboards-based-on-user-roles)
+- [T896804 - ASP.NET Core Dashboard - How to implement authentication | DevExpress Support](https://supportcenter.devexpress.com/ticket/details/t896804/asp-net-core-dashboard-how-to-implement-authentication)
