@@ -22,6 +22,14 @@ Every custom store/provider uses the `System.Web.HttpContext.Current.Session["Cu
 
 As for `ViewerOnly` mode, we also handle the [DashboardConfigurator.VerifyClientTrustLevel Event](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel) and set the `e.ClientTrustLevel` argument to the `Restricted` value as recommended in this help section: [Security Considerations > Web Dashboard Working Modes](https://docs.devexpress.com/Dashboard/118651/web-dashboard/general-information/security-considerations#web-dashboard-working-modes).
 
+Here is a table that illustrates the user IDs and their associated rights in this example:
+
+| Role  | Dashboard Storage | DataSource Storage | ConnectionString Provider | DBSchema Provider | Create/Edit |
+| --- | --- | --- | --- | --- | --- |
+| Admin | dashboard1_admin, dashboard2_admin | SqlDataSource, JsonDataSource | Northwind, CarsXtraScheduling | All (Categories, Products, Cars,...) | Yes |
+| User | dashboard1_user | SqlDataSource | CarsXtraScheduling | Cars | No |
+| Guest | dashboard1_guest (ViewerOnly mode) | - | - | - | - |
+
 ## See Also
 
 - [T590909 - Web Dashboard - How to load dashboards based on user roles](https://supportcenter.devexpress.com/ticket/details/t590909/web-dashboard-how-to-load-dashboards-based-on-user-roles)
