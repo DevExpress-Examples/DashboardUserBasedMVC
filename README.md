@@ -1,6 +1,6 @@
 # MVC Dashboard - How to implement multi-tenant Dashboard architecture
 
-This example illustrates how to configure the Dashboard component so that it works in the muti-user environment. The following user-specific features are implemented here:
+This example illustrates how to configure the Dashboard component so that it works in the multi-user environment. The following user-specific features are implemented here:
 
 * Load different lists of dashboards depending on the current user's ID ([CustomDashboardStorage.cs](./CS/MVCDashboard/Code/CustomDashboardStorage.cs))
 * Load different lists of datasources depending on the current user's ID ([CustomDataSourceStorage.cs](./CS/MVCDashboard/Code/CustomDataSourceStorage.cs))
