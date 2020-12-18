@@ -6,6 +6,7 @@ This example illustrates how to configure the Dashboard component so that it wor
 * Load different lists of datasources depending on the current user's ID ([CustomDataSourceStorage.cs](./CS/MVCDashboard/Code/CustomDataSourceStorage.cs))
 * Load different lists of connection strings depending on the current user's ID ([CustomConnectionStringProvider.cs](./CS/MVCDashboard/Code/CustomConnectionStringProvider.cs))
 * Load different datasource schema depending on the current user's ID ([CustomDBSchemaProvider.cs](./CS/MVCDashboard/Code/CustomDBSchemaProvider.cs))
+* Allow creating/editing dashboards depending on the current user's ID ([CustomDashboardStorage.cs](./CS/MVCDashboard/Code/CustomDashboardStorage.cs))
 * Apply the `ViewerOnly` mode for some users ([Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) and [DashboardConfig.cs](./CS/MVCDashboard/App_Start/DashboardConfig.cs))
 
 At the application startup, an end-user opens the [Index.cshtml](./CS/MVCDashboard/Views/Home/Index.cshtml) view with the ComboBox and the Submit button for logging in. After that, the ID of the selected user is passed to the `HttpContext.Session["CurrentUser"]` variable and the end-user is redirected `HttpContext.Session["CurrentUser"]` variable and the end-user is redirected to the [Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) view where the Dashboard component demonstrates the features listed above. We implement a set of custom providers/storages to for user-specific processing:
