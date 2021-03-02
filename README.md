@@ -1,41 +1,43 @@
 # MVC Dashboard - How to implement multi-tenant Dashboard architecture
 
-This example shows how to configure the Dashboard control so that it works in the multi-user environment. You can limit access to the sensitive information depending on the current user's ID.
+This example shows how to configure the Dashboard control so that it works in the multi-user environment. 
 
-## Dashboards
+You can identify a user in the current session and return the following user-specific content:
 
-Create custom dahboard storage and specify which dashboards the user can access, edit, and save. 
+### Dashboards
+
+Custom dahboard storage allows you to specify which dashboards the user can access, edit, and save. 
 
 **API**: [IEditableDashboardStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IEditableDashboardStorage) 
 
 **Files to look at**: [CustomDashboardStorage.cs](./CS/MVCDashboard/Code/CustomDashboardStorage.cs)
 
-## Data Sources
+### Data Sources
 
-Create custom data source storage and specify which data sources are available to the user. 
+Custom data source storage allows you to specify which data sources are available to the user. 
 
 **API**: [IDataSourceStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDataSourceStorage) 
 
 **Files to look at**: [CustomDataSourceStorage.cs](./CS/MVCDashboard/Code/CustomDataSourceStorage.cs)
 
-## Data Source Schema
+### Data Source Schema
 
-Create a custom data source schema provider and filter the data source for different users to show only a part of the data source.
+A custom data source schema provider allows you to filter the data source for different users to show only a part of the data source.
 
-**API**: [DBSchemaProviderEx ](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Sql.DBSchemaProviderEx) Class
+**API**: [DBSchemaProviderEx Class](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Sql.DBSchemaProviderEx)
 
 **Files to look at**: [CustomDBSchemaProvider.cs](./CS/MVCDashboard/Code/CustomDBSchemaProvider.cs)
 
-## Connection Strings
+### Connection Strings
 
-Create a custom connection string provider and specify connection strings depending on the user's access rights.
+A custom connection string provider allows you to specify connection strings depending on the user's access rights.
 
 **API**: [IDataSourceWizardConnectionStringsProvider Interface](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Web.IDataSourceWizardConnectionStringsProvider) 
 
 **Files to look at**: [CustomConnectionStringProvider.cs](./CS/MVCDashboard/Code/CustomConnectionStringProvider.cs)
 
 
-## Working Mode
+### Working Mode
 
 The Web Dashboard control can operate in `ViewerOnly` mode for unauthorized users and guests. To do this, handle the [DashboardConfigurator.VerifyClientTrustLevel](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel) event and set the `e.ClientTrustLevel` property to `Restricted`. This setting prevents inadvertent or unauthorized modifications of dashboards stored on a server. You can find more information in the following help section: [Security Considerations - Web Dashboard Working Modes](https://docs.devexpress.com/Dashboard/118651/web-dashboard/general-information/security-considerations#web-dashboard-working-modes).
 
@@ -44,9 +46,9 @@ The Web Dashboard control can operate in `ViewerOnly` mode for unauthorized user
 **Files to look at**: [Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) and [DashboardConfig.cs](./CS/MVCDashboard/App_Start/DashboardConfig.cs)
 
 
-## Example Overview
+## Example Structure
 
-Every custom store/provider uses the `HttpContext.Current.Session["CurrentUser"]` value to detect the current user and return user-specific content.
+You can limit access to the sensitive information depending on the current user's ID. Every custom store/provider reads the `HttpContext.Current.Session["CurrentUser"]` value from session state.
 
 When the application starts, you see the [Index](./CS/MVCDashboard/Views/Home/Index.cshtml) view with a ComboBox in which you can select a user. When you click the **Sign in** button, the ID of the selected user is passed to the `HttpContext.Current.Session["CurrentUser"]` variable and you are redirected to the [Dashboard](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) view. In this view, the Web Dashboard control demonstrates the features according to the selected user. Below is a table that illustrates the user IDs and their associated rights in this example:
 
@@ -55,7 +57,7 @@ When the application starts, you see the [Index](./CS/MVCDashboard/Views/Home/In
 | Admin | dashboard1_admin, dashboard2_admin | SqlDataSource, JsonDataSource | Northwind, CarsXtraScheduling | All (Categories, Products, Cars,...) | Designer, Viewer | Yes |
 | User | dashboard1_user | SqlDataSource | CarsXtraScheduling | Cars | Designer, Viewer | No |
 | Guest | dashboard1_guest | - | - | - | ViewerOnly | - |
-
+| Unauthorized| - | - | - | - | ViewerOnly | - |
 
 
 
