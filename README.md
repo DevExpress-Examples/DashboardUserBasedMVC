@@ -1,14 +1,50 @@
 # MVC Dashboard - How to implement multi-tenant Dashboard architecture
 
-This example shows how to configure the Dashboard control so that it works in the multi-user environment. You can limit access to the following information depending on the current user's ID:
+This example shows how to configure the Dashboard control so that it works in the multi-user environment. You can limit access to the sensitive information depending on the current user's ID.
 
-|    | Description | API | File |
-| --- | --- | --- | --- |
-| **Dashboards** | Create custom dahboard storage and specify which dashboards the user can access, edit, and save. | [IEditableDashboardStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IEditableDashboardStorage) | [CustomDashboardStorage.cs](./CS/MVCDashboard/Code/CustomDashboardStorage.cs) |
-| **Data sources**  | Create custom data source storage and specify which data sources are available to the user. | [IDataSourceStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDataSourceStorage) | [CustomDataSourceStorage.cs](./CS/MVCDashboard/Code/CustomDataSourceStorage.cs) |
-| **Data source schema**  | Create a custom data source schema provider and filter the data source for different users to show only a part of the data source. | [DBSchemaProviderEx Class](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Sql.DBSchemaProviderEx) | [CustomDBSchemaProvider.cs](./CS/MVCDashboard/Code/CustomDBSchemaProvider.cs) |
-| **Connection strings**  | Create a custom connection string provider and specify connection strings depending on the user's access rights. | [IDataSourceWizardConnectionStringsProvider Interface](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Web.IDataSourceWizardConnectionStringsProvider) | [CustomConnectionStringProvider.cs](./CS/MVCDashboard/Code/CustomConnectionStringProvider.cs) |
-| **Working mode**  | Configure the security level and specify whether the user can access the Designer mode. | [DashboardConfigurator.VerifyClientTrustLevel](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel) | [Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) <br/> [DashboardConfig.cs](./CS/MVCDashboard/App_Start/DashboardConfig.cs) |
+## Dashboards
+
+Create custom dahboard storage and specify which dashboards the user can access, edit, and save. 
+
+**API**: [IEditableDashboardStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IEditableDashboardStorage) 
+
+**Files to look at**: [CustomDashboardStorage.cs](./CS/MVCDashboard/Code/CustomDashboardStorage.cs)
+
+## Data Sources
+
+Create custom data source storage and specify which data sources are available to the user. 
+
+**API**: [IDataSourceStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IDataSourceStorage) 
+
+**Files to look at**: [CustomDataSourceStorage.cs](./CS/MVCDashboard/Code/CustomDataSourceStorage.cs)
+
+## Data Source Schema
+
+Create a custom data source schema provider and filter the data source for different users to show only a part of the data source.
+
+**API**: [DBSchemaProviderEx ](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Sql.DBSchemaProviderEx) Class
+
+**Files to look at**: [CustomDBSchemaProvider.cs](./CS/MVCDashboard/Code/CustomDBSchemaProvider.cs)
+
+## Connection Strings
+
+Create a custom connection string provider and specify connection strings depending on the user's access rights.
+
+**API**: [IDataSourceWizardConnectionStringsProvider Interface](https://docs.devexpress.com/CoreLibraries/DevExpress.DataAccess.Web.IDataSourceWizardConnectionStringsProvider) 
+
+**Files to look at**: [CustomConnectionStringProvider.cs](./CS/MVCDashboard/Code/CustomConnectionStringProvider.cs)
+
+
+## Working Mode
+
+The Web Dashboard control can operate in `ViewerOnly` mode for unauthorized users and guests. To do this, handle the [DashboardConfigurator.VerifyClientTrustLevel](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel) event and set the `e.ClientTrustLevel` property to `Restricted`. This setting prevents inadvertent or unauthorized modifications of dashboards stored on a server. You can find more information in the following help section: [Security Considerations - Web Dashboard Working Modes](https://docs.devexpress.com/Dashboard/118651/web-dashboard/general-information/security-considerations#web-dashboard-working-modes).
+
+**API**: [DashboardConfigurator.VerifyClientTrustLevel Event](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel)
+
+**Files to look at**: [Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) and [DashboardConfig.cs](./CS/MVCDashboard/App_Start/DashboardConfig.cs)
+
+
+## Example Overview
 
 Every custom store/provider uses the `HttpContext.Current.Session["CurrentUser"]` value to detect the current user and return user-specific content.
 
@@ -21,7 +57,7 @@ When the application starts, you see the [Index](./CS/MVCDashboard/Views/Home/In
 | Guest | dashboard1_guest | - | - | - | ViewerOnly | - |
 
 
-In this example, the Web Dashboard control operates in `ViewerOnly` mode for unauthorized users and guests. To do this, handle the [DashboardConfigurator.VerifyClientTrustLevel](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.DashboardConfigurator.VerifyClientTrustLevel) event and set the `e.ClientTrustLevel` property to `Restricted` ([Dashboard.cshtml](./CS/MVCDashboard/Views/Home/Dashboard.cshtml) and [DashboardConfig.cs](./CS/MVCDashboard/App_Start/DashboardConfig.cs)). This setting prevents inadvertent or unauthorized modifications of dashboards stored on a server. You can find more information in the following help section: [Security Considerations - Web Dashboard Working Modes](https://docs.devexpress.com/Dashboard/118651/web-dashboard/general-information/security-considerations#web-dashboard-working-modes).
+
 
 ## See Also
 
