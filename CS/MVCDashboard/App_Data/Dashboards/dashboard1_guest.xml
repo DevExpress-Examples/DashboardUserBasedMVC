@@ -1,5 +1,5 @@
 <Dashboard>
-  <Title Text="Customers (Admin)" />
+  <Title Text="Customers (Guest)" />
   <DataSources>
     <JsonDataSource Name="JSON Data Source" RootElement="Customers" ComponentName="jsonDataSource1">
       <Source SourceType="DevExpress.DataAccess.Json.UriJsonSource" Uri="https://raw.githubusercontent.com/DevExpress-Examples/DataSources/master/JSON/customers.json" />
@@ -12,7 +12,6 @@
         <Dimension DataMember="Address" DefaultId="DataItem1" />
         <Dimension DataMember="City" DefaultId="DataItem2" />
         <Dimension DataMember="ContactTitle" DefaultId="DataItem3" />
-        <Dimension DataMember="Phone" DefaultId="DataItem4" />
       </DataItems>
       <GridColumns>
         <GridDimensionColumn>
@@ -26,9 +25,6 @@
         </GridDimensionColumn>
         <GridDimensionColumn>
           <Dimension DefaultId="DataItem3" />
-        </GridDimensionColumn>
-        <GridDimensionColumn>
-          <Dimension DefaultId="DataItem4" />
         </GridDimensionColumn>
       </GridColumns>
       <GridOptions />
