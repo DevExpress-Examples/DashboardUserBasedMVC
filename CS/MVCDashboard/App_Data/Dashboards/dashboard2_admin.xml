@@ -1,50 +1,42 @@
 <Dashboard>
-  <Title Text="New Dashboard 2 (Admin)" />
+  <Title Text="Customers (Admin)" />
   <DataSources>
-    <SqlDataSource Name="SQL Data Source" ComponentName="sqlDataSource1">
-      <Connection Name="NorthwindConnectionString" FromAppConfig="true" />
-      <Query Type="SelectQuery" Name="Categories">
-        <Tables>
-          <Table Name="Categories" />
-        </Tables>
-        <Columns>
-          <AllColumns Table="Categories" />
-        </Columns>
-      </Query>
-      <Query Type="SelectQuery" Name="Products">
-        <Tables>
-          <Table Name="Products" />
-        </Tables>
-        <Columns>
-          <AllColumns Table="Products" />
-        </Columns>
-      </Query>
-      <ConnectionOptions CloseConnection="true" />
-    </SqlDataSource>
+    <JsonDataSource Name="JSON Data Source" RootElement="Customers" ComponentName="jsonDataSource1">
+      <Source SourceType="DevExpress.DataAccess.Json.UriJsonSource" Uri="https://raw.githubusercontent.com/DevExpress-Examples/DataSources/master/JSON/customers.json" />
+    </JsonDataSource>
   </DataSources>
   <Items>
-    <Chart ComponentName="chartDashboardItem1" Name="Chart 1" DataSource="sqlDataSource1" DataMember="Products">
+    <Grid ComponentName="gridDashboardItem1" Name="Customers" DataSource="jsonDataSource1">
       <DataItems>
-        <Dimension DataMember="ProductName" DefaultId="DataItem0" />
-        <Measure DataMember="UnitPrice" DefaultId="DataItem1" />
+        <Dimension DataMember="CompanyName" DefaultId="DataItem0" />
+        <Dimension DataMember="Address" DefaultId="DataItem1" />
+        <Dimension DataMember="City" DefaultId="DataItem2" />
+        <Dimension DataMember="ContactTitle" DefaultId="DataItem3" />
+        <Dimension DataMember="Phone" DefaultId="DataItem4" />
       </DataItems>
-      <Arguments>
-        <Argument DefaultId="DataItem0" />
-      </Arguments>
-      <Panes>
-        <Pane Name="Pane 1">
-          <Series>
-            <Simple>
-              <Value DefaultId="DataItem1" />
-            </Simple>
-          </Series>
-        </Pane>
-      </Panes>
-    </Chart>
+      <GridColumns>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem0" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem1" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem2" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem3" />
+        </GridDimensionColumn>
+        <GridDimensionColumn>
+          <Dimension DefaultId="DataItem4" />
+        </GridDimensionColumn>
+      </GridColumns>
+      <GridOptions />
+    </Grid>
   </Items>
   <LayoutTree>
     <LayoutGroup>
-      <LayoutItem DashboardItem="chartDashboardItem1" />
+      <LayoutItem DashboardItem="gridDashboardItem1" />
     </LayoutGroup>
   </LayoutTree>
 </Dashboard>

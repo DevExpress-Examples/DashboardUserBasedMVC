@@ -1,4 +1,8 @@
-﻿@using DevExpress.DashboardWeb
+﻿@{
+    ViewBag.Title = "Web Dashboard";
+}
+@using DevExpress.DashboardWeb
+
 
 <style type="text/css">
     html, body, form {
@@ -7,8 +11,9 @@
         padding: 0;
         overflow: hidden;
     }
+
     .dashboard {
-        height: calc(100% - 20px)!important;
+        height: calc(100% - 20px) !important;
     }
 </style>
 
@@ -27,6 +32,6 @@
     settings.ClientSideEvents.BeforeRender = "onBeforeRender";
     settings.Init += (s, e) => {
         var userName = (string)HttpContext.Current.Session["CurrentUser"];
-        ((MVCxDashboard)s).WorkingMode = (userName == "Guest" ? WorkingMode.ViewerOnly : WorkingMode.Viewer);
+        ((MVCxDashboard)s).WorkingMode = (userName == "Admin" || userName == "User" ? WorkingMode.Viewer : WorkingMode.ViewerOnly);
     };
 }).GetHtml()
