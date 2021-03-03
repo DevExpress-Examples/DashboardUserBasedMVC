@@ -6,7 +6,7 @@ You can identify a user in the current session and return the following user-spe
 
 ### Dashboards
 
-Custom dahboard storage allows you to specify which dashboards the user can access, edit, and save. 
+Custom dashboard storage allows you to specify which dashboards the user can access, edit, and save. 
 
 **API**: [IEditableDashboardStorage Interface](https://docs.devexpress.com/Dashboard/DevExpress.DashboardWeb.IEditableDashboardStorage) 
 
