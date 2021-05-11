@@ -1,4 +1,4 @@
-# MVC Dashboard - How to implement multi-tenant Dashboard architecture
+# ASP.NET MVC Dashboard - How to implement multi-tenant Dashboard architecture
 
 This example shows how to configure the Dashboard control so that it works in the multi-user environment. 
 
@@ -60,10 +60,12 @@ When the application starts, you see the [Index](./CS/MVCDashboard/Views/Home/In
 | Unauthorized| - | - | - | - | ViewerOnly | - |
 
 
+## Documentation
 
-## See Also
+- [Manage Multi-Tenancy](https://docs.devexpress.com/Dashboard/402924/web-dashboard/dashboard-backend/manage-multi-tenancy)
 
-- [T590909 - Web Dashboard - How to load dashboards based on user roles](https://supportcenter.devexpress.com/ticket/details/t590909/web-dashboard-how-to-load-dashboards-based-on-user-roles)
-- [T896804 - ASP.NET Core Dashboard - How to implement authentication](https://supportcenter.devexpress.com/ticket/details/t896804/asp-net-core-dashboard-how-to-implement-authentication)
-- [T400693 - MVC Dashboard - How to load and save dashboards from/to a database](https://supportcenter.devexpress.com/ticket/details/t400693/mvc-dashboard-how-to-load-and-save-dashboards-from-to-a-database)
-- [T983227 - MVC Core Dashboard - How to implement multi-tenant Dashboard architecture](https://supportcenter.devexpress.com/ticket/details/t983227/mvc-core-dashboard-how-to-implement-multi-tenant-dashboard-architecture)
+## More Examples
+- [ASP.NET MVC Dashboard - How to load different data based on the current user](https://github.com/DevExpress-Examples/DashboardDifferentUserDataMVC)
+- [ASP.NET MVC Dashboard - How to load and save dashboards from/to a database](https://github.com/DevExpress-Examples/mvc-dashboard-how-to-load-and-save-dashboards-from-to-a-database-t400693)
+- [ASP.NET Core Dashboard - How to implement multi-tenant Dashboard architecture](https://github.com/DevExpress-Examples/DashboardUserBasedAspNetCore)
+- [ASP.NET Core Dashboard - How to load different data based on the current user](https://github.com/DevExpress-Examples/DashboardDifferentUserDataAspNetCore)
