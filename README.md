@@ -1,4 +1,4 @@
-# ASP.NET MVC Dashboard - How to implement multi-tenant Dashboard architecture
+# Dashboard for MVC - How to implement multi-tenant Dashboard architecture
 
 This example shows how to configure the Dashboard control so that it works in the multi-user environment. 
 
