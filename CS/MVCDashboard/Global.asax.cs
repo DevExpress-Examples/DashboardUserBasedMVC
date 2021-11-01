@@ -12,6 +12,7 @@ namespace MVCDashboard {
 
     public class MvcApplication : System.Web.HttpApplication {
         protected void Application_Start() {
+            ControllerBuilder.Current.SetControllerFactory(typeof(RestrictedControllerFactory));
             DashboardConfig.RegisterService(RouteTable.Routes);
             AreaRegistration.RegisterAllAreas();
 
