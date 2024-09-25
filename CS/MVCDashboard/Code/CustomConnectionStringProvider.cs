@@ -8,8 +8,8 @@ public class CustomConnectionStringProvider : IDataSourceWizardConnectionStrings
     private Dictionary<string, string> connectionStrings = new Dictionary<string, string>();
 
     public CustomConnectionStringProvider() {
-        connectionStrings.Add("NorthwindConnectionString", @"XpoProvider=MSAccess; Provider=Microsoft.Jet.OLEDB.4.0; Data Source=|DataDirectory|\nwind.mdb;");
-        connectionStrings.Add("CarsXtraSchedulingConnectionString", @"XpoProvider=MSAccess; Provider=Microsoft.Jet.OLEDB.4.0; Data Source=|DataDirectory|\CarsDB.mdb;");
+        connectionStrings.Add("NorthwindConnectionString", @"XpoProvider=MSAccess; Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\nwind.mdb;");
+        connectionStrings.Add("CarsXtraSchedulingConnectionString", @"XpoProvider=MSAccess; Provider=Microsoft.ACE.OLEDB.12.0; Data Source=|DataDirectory|\CarsDB.mdb;");
     }
 
     public Dictionary<string, string> GetConnectionDescriptions() {
